@@ -65,11 +65,28 @@ public class CajeroAutomatico {
                     }
                     break;
                 case 3:
+                    double saldoAnteriorRetiro = saldo;
                     saldo = procesarRetiro(teclado, saldo);
+
+                    if (saldo != saldoAnteriorRetiro) {
+                        retirosExitosos++;
+                        totalRetirado = totalRetirado + (saldoAnteriorRetiro - saldo);
+                    } else {
+                        operacionesRechazadas++;
+                    }
                     break;
 
                 case 4:
-                    System.out.println("Retiro con comisión");
+                    double saldoAnteriorComision = saldo;
+                    saldo = procesarRetiro(teclado, saldo, comision);
+
+                    if (saldo != saldoAnteriorComision) {
+                        retirosExitosos++;
+                        totalRetirado = totalRetirado + (saldoAnteriorComision - saldo - comision);
+                        totalComisiones = totalComisiones + comision;
+                    } else {
+                        operacionesRechazadas++;
+                    }
                     break;
 
                 case 5:
@@ -189,6 +206,50 @@ public class CajeroAutomatico {
         System.out.println("Monto solicitado: Q" + monto);
         System.out.println("Saldo anterior: Q" + saldoAnterior);
         System.out.println("Total debitado: Q" + monto);
+        System.out.println("Saldo actualizado: Q" + saldo);
+
+        return saldo;
+    }
+
+    // Método para procesar un retiro con comisión
+    public static double procesarRetiro(Scanner teclado, double saldo, double comision) {
+
+        double monto;
+
+        System.out.print("\nIngrese el monto a retirar: Q");
+        monto = teclado.nextDouble();
+
+        if (monto <= 0) {
+            System.out.println("Retiro rechazado: el monto debe ser mayor que Q0.00.");
+            return saldo;
+        }
+
+        if (monto % 20 != 0) {
+            System.out.println("Retiro rechazado: el monto debe ser múltiplo de Q20.00.");
+            return saldo;
+        }
+
+        if (monto > 2000) {
+            System.out.println("Retiro rechazado: el monto no puede superar Q2000.00.");
+            return saldo;
+        }
+
+        double totalDebitado = monto + comision;
+
+        if (totalDebitado > saldo) {
+            System.out.println("Retiro rechazado: el saldo no cubre el monto más la comisión.");
+            return saldo;
+        }
+
+        double saldoAnterior = saldo;
+
+        saldo = saldo - totalDebitado;
+
+        System.out.println("\n===== RETIRO CON COMISIÓN =====");
+        System.out.println("Monto solicitado: Q" + monto);
+        System.out.println("Comisión: Q" + comision);
+        System.out.println("Total debitado: Q" + totalDebitado);
+        System.out.println("Saldo anterior: Q" + saldoAnterior);
         System.out.println("Saldo actualizado: Q" + saldo);
 
         return saldo;
