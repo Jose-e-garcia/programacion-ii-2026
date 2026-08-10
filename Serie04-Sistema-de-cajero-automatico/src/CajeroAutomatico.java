@@ -52,7 +52,7 @@ public class CajeroAutomatico {
             switch (opcion) {
 
                 case 1:
-                    System.out.println("Consulta de saldo");
+                    consultarSaldo(titular, numeroCuenta, saldo);
                     break;
 
                 case 2:
@@ -106,5 +106,13 @@ public class CajeroAutomatico {
         }
 
         return acceso;
+    }
+    // Método para consultar el saldo
+    public static void consultarSaldo(String titular, String numeroCuenta, double saldo) {
+
+        System.out.println("\n===== CONSULTA DE SALDO =====");
+        System.out.println("Titular: " + titular);
+        System.out.println("Número de cuenta: " + numeroCuenta);
+        System.out.println("Saldo disponible: Q" + saldo);
     }
 }
