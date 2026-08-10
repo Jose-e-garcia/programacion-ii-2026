@@ -11,7 +11,8 @@ public class CajeroAutomatico {
         String numeroCuenta = "3121";
         int pinCorrecto = 2026;
 
-        double saldo = 1000.00;
+        double saldoInicial = 1000.00;
+        double saldo = saldoInicial;
         double comision = 10.00;
 
         // Contadores y acumuladores
@@ -90,15 +91,17 @@ public class CajeroAutomatico {
                     break;
 
                 case 5:
-                    mostrarResumen(titular, numeroCuenta, saldo, depositosExitosos,
-                            totalDepositado, retirosExitosos, totalRetirado,
-                            totalComisiones, operacionesRechazadas, opcionesInvalidas);
+                    mostrarResumen(titular, numeroCuenta, saldoInicial, saldo,
+                            depositosExitosos, totalDepositado, retirosExitosos,
+                            totalRetirado, totalComisiones, operacionesRechazadas,
+                            opcionesInvalidas);
                     break;
 
                 case 6:
-                    mostrarResumen(titular, numeroCuenta, saldo, depositosExitosos,
-                            totalDepositado, retirosExitosos, totalRetirado,
-                            totalComisiones, operacionesRechazadas, opcionesInvalidas);
+                    mostrarResumen(titular, numeroCuenta, saldoInicial, saldo,
+                            depositosExitosos, totalDepositado, retirosExitosos,
+                            totalRetirado, totalComisiones, operacionesRechazadas,
+                            opcionesInvalidas);
 
                     System.out.println("\nGracias por utilizar el cajero automático.");
                     System.out.println("¡Hasta pronto!");
@@ -264,7 +267,8 @@ public class CajeroAutomatico {
 
     // Método para mostrar el resumen de la sesión
     public static void mostrarResumen(String titular, String numeroCuenta,
-                                      double saldo, int depositosExitosos,
+                                      double saldoInicial, double saldo,
+                                      int depositosExitosos,
                                       double totalDepositado, int retirosExitosos,
                                       double totalRetirado, double totalComisiones,
                                       int operacionesRechazadas, int opcionesInvalidas) {
@@ -272,7 +276,7 @@ public class CajeroAutomatico {
         System.out.println("\n===== RESUMEN DE LA SESIÓN =====");
         System.out.println("Titular: " + titular);
         System.out.println("Número de cuenta: " + numeroCuenta);
-        System.out.println("Saldo inicial: Q1000.00");
+        System.out.println("Saldo inicial: Q" + saldoInicial);
         System.out.println("Depósitos exitosos: " + depositosExitosos);
         System.out.println("Total depositado: Q" + totalDepositado);
         System.out.println("Retiros exitosos: " + retirosExitosos);
