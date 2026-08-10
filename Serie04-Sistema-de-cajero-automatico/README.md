@@ -1,7 +1,7 @@
 # Cajero Automático
 
 Nombre: Jose Ernesto Garcia
-Carnet: 3121
+Carnet: 9941-10-13121
 Curso: Programación II
 Sección: C
 
