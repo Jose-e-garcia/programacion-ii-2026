@@ -90,7 +90,9 @@ public class CajeroAutomatico {
                     break;
 
                 case 5:
-                    System.out.println("Resumen de la sesión");
+                    mostrarResumen(titular, numeroCuenta, saldo, depositosExitosos,
+                            totalDepositado, retirosExitosos, totalRetirado,
+                            totalComisiones, operacionesRechazadas, opcionesInvalidas);
                     break;
 
                 case 6:
@@ -253,5 +255,26 @@ public class CajeroAutomatico {
         System.out.println("Saldo actualizado: Q" + saldo);
 
         return saldo;
+    }
+
+    // Método para mostrar el resumen de la sesión
+    public static void mostrarResumen(String titular, String numeroCuenta,
+                                      double saldo, int depositosExitosos,
+                                      double totalDepositado, int retirosExitosos,
+                                      double totalRetirado, double totalComisiones,
+                                      int operacionesRechazadas, int opcionesInvalidas) {
+
+        System.out.println("\n===== RESUMEN DE LA SESIÓN =====");
+        System.out.println("Titular: " + titular);
+        System.out.println("Número de cuenta: " + numeroCuenta);
+        System.out.println("Saldo inicial: Q1000.00");
+        System.out.println("Depósitos exitosos: " + depositosExitosos);
+        System.out.println("Total depositado: Q" + totalDepositado);
+        System.out.println("Retiros exitosos: " + retirosExitosos);
+        System.out.println("Total entregado en retiros: Q" + totalRetirado);
+        System.out.println("Total cobrado en comisiones: Q" + totalComisiones);
+        System.out.println("Operaciones rechazadas: " + operacionesRechazadas);
+        System.out.println("Opciones inválidas: " + opcionesInvalidas);
+        System.out.println("Saldo actual: Q" + saldo);
     }
 }
