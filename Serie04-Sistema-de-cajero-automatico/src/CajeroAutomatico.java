@@ -56,11 +56,16 @@ public class CajeroAutomatico {
                     break;
 
                 case 2:
-                    System.out.println("Depósito de dinero");
-                    break;
+                    double saldoAnterior = saldo;
+                    saldo = procesarDeposito(teclado, saldo);
 
+                    if (saldo != saldoAnterior) {
+                        depositosExitosos++;
+                        totalDepositado = totalDepositado + (saldo - saldoAnterior);
+                    }
+                    break;
                 case 3:
-                    System.out.println("Retiro normal");
+                    saldo = procesarRetiro(teclado, saldo);
                     break;
 
                 case 4:
@@ -114,5 +119,78 @@ public class CajeroAutomatico {
         System.out.println("Titular: " + titular);
         System.out.println("Número de cuenta: " + numeroCuenta);
         System.out.println("Saldo disponible: Q" + saldo);
+    }
+
+    // Método para procesar un depósito
+    public static double procesarDeposito(Scanner teclado, double saldo) {
+
+        double monto;
+
+        System.out.print("\nIngrese el monto a depositar: Q");
+        monto = teclado.nextDouble();
+
+        while (monto <= 0 || monto > 5000) {
+
+            if (monto <= 0) {
+                System.out.println("Error: el monto debe ser mayor que Q0.00.");
+            } else {
+                System.out.println("Error: el monto no puede superar Q5000.00.");
+            }
+
+            System.out.print("Ingrese nuevamente el monto: Q");
+            monto = teclado.nextDouble();
+        }
+
+        double saldoAnterior = saldo;
+
+        saldo = saldo + monto;
+
+        System.out.println("\n===== DEPÓSITO REALIZADO =====");
+        System.out.println("Monto depositado: Q" + monto);
+        System.out.println("Saldo anterior: Q" + saldoAnterior);
+        System.out.println("Saldo actualizado: Q" + saldo);
+
+        return saldo;
+    }
+
+    // Método para procesar un retiro normal
+    public static double procesarRetiro(Scanner teclado, double saldo) {
+
+        double monto;
+
+        System.out.print("\nIngrese el monto a retirar: Q");
+        monto = teclado.nextDouble();
+
+        if (monto <= 0) {
+            System.out.println("Retiro rechazado: el monto debe ser mayor que Q0.00.");
+            return saldo;
+        }
+
+        if (monto % 20 != 0) {
+            System.out.println("Retiro rechazado: el monto debe ser múltiplo de Q20.00.");
+            return saldo;
+        }
+
+        if (monto > 2000) {
+            System.out.println("Retiro rechazado: el monto no puede superar Q2000.00.");
+            return saldo;
+        }
+
+        if (monto > saldo) {
+            System.out.println("Retiro rechazado: fondos insuficientes.");
+            return saldo;
+        }
+
+        double saldoAnterior = saldo;
+
+        saldo = saldo - monto;
+
+        System.out.println("\n===== RETIRO REALIZADO =====");
+        System.out.println("Monto solicitado: Q" + monto);
+        System.out.println("Saldo anterior: Q" + saldoAnterior);
+        System.out.println("Total debitado: Q" + monto);
+        System.out.println("Saldo actualizado: Q" + saldo);
+
+        return saldo;
     }
 }
