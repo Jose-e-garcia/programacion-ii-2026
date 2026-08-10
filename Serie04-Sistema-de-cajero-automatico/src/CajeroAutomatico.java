@@ -96,7 +96,12 @@ public class CajeroAutomatico {
                     break;
 
                 case 6:
-                    System.out.println("Saliendo del sistema...");
+                    mostrarResumen(titular, numeroCuenta, saldo, depositosExitosos,
+                            totalDepositado, retirosExitosos, totalRetirado,
+                            totalComisiones, operacionesRechazadas, opcionesInvalidas);
+
+                    System.out.println("\nGracias por utilizar el cajero automático.");
+                    System.out.println("¡Hasta pronto!");
                     break;
 
                 default:
