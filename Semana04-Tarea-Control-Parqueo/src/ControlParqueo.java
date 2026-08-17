@@ -4,6 +4,11 @@ public class ControlParqueo {
 
     public static void main(String[] args) {
 
+        System.out.println("=================================");
+        System.out.println("Nombre: José Ernesto García");
+        System.out.println("Carnet: 9941-10-13121");
+        System.out.println("=================================");
+
         Scanner teclado = new Scanner(System.in);
 
         int cantidadVehiculos;
@@ -23,6 +28,10 @@ public class ControlParqueo {
         // Acumulador
         double totalRecaudado = 0.00;
 
+        // Pago más alto
+        double pagoMasAlto = 0.00;
+        String placaPagoMasAlto = "";
+
 
         // Registro de vehículos
         for (int i = 1; i <= cantidadVehiculos; i++) {
@@ -32,7 +41,7 @@ public class ControlParqueo {
             String placa;
             int tipoVehiculo;
             // Agregamos el nombre del tipo de vehiculo
-            String nombreVehiculo
+            String nombreVehiculo;
             int horas;
             String ticketPerdido;
 
@@ -106,11 +115,28 @@ public class ControlParqueo {
             // Acumular dinero recaudado
             totalRecaudado = totalRecaudado + total;
 
+            // Verificar pago más alto
+            if (total > pagoMasAlto) {
+                pagoMasAlto = total;
+                placaPagoMasAlto = placa;
+            }
+
             // Mostrar comprobante
             mostrarComprobante(placa, nombreVehiculo, horas, tarifa, subtotal,
                     descuento, recargo, total);
 
         }
+
+        // Resumen de la jornada
+        System.out.println("\n========== RESUMEN DE LA JORNADA ==========");
+        System.out.println("Cantidad de motocicletas: " + cantidadMotocicletas);
+        System.out.println("Cantidad de automóviles: " + cantidadAutomoviles);
+        System.out.println("Cantidad de pickups o camionetas: " + cantidadPickups);
+        System.out.println("Cantidad de tickets perdidos: " + cantidadTicketsPerdidos);
+        System.out.println("Total de dinero recaudado: Q" + totalRecaudado);
+        System.out.println("Pago más alto: Q" + pagoMasAlto);
+        System.out.println("Placa del pago más alto: " + placaPagoMasAlto);
+        System.out.println("============================================");
 
         }
 
