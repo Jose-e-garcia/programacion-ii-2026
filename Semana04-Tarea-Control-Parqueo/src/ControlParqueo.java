@@ -14,6 +14,16 @@ public class ControlParqueo {
             cantidadVehiculos = teclado.nextInt();
         } while (cantidadVehiculos <= 0);
 
+        // Contadores
+        int cantidadMotocicletas = 0;
+        int cantidadAutomoviles = 0;
+        int cantidadPickups = 0;
+        int cantidadTicketsPerdidos = 0;
+
+        // Acumulador
+        double totalRecaudado = 0.00;
+
+
         // Registro de vehículos
         for (int i = 1; i <= cantidadVehiculos; i++) {
 
@@ -76,6 +86,10 @@ public class ControlParqueo {
                 total = calcularPago(horas, tarifa) - descuento;
             }
 
+            // Mostrar comprobante
+            mostrarComprobante(placa, nombreVehiculo, horas, tarifa, subtotal,
+                    descuento, recargo, total);
+
         }
 
         }
@@ -125,6 +139,23 @@ public class ControlParqueo {
     // Método calcular pago con recargo
     public static double calcularPago(int horas, double tarifa, double recargo) {
         return (horas * tarifa) + recargo;
+    }
+
+    // Método mostrar comprobante
+    public static void mostrarComprobante(String placa, String nombreVehiculo, int horas,
+                                          double tarifa, double subtotal, double descuento,
+                                          double recargo, double total) {
+
+        System.out.println("\n========== COMPROBANTE ==========");
+        System.out.println("Placa: " + placa);
+        System.out.println("Tipo: " + nombreVehiculo);
+        System.out.println("Horas estacionado: " + horas);
+        System.out.println("Tarifa por hora: Q" + tarifa);
+        System.out.println("Subtotal: Q" + subtotal);
+        System.out.println("Descuento: Q" + descuento);
+        System.out.println("Recargo por ticket perdido: Q" + recargo);
+        System.out.println("TOTAL: Q" + total);
+        System.out.println("=================================");
     }
 
 }
