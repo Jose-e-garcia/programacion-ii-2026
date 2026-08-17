@@ -23,6 +23,7 @@ public class ControlParqueo {
             int tipoVehiculo;
             int horas;
             String ticketPerdido;
+
             double tarifa;
             double subtotal;
             double descuento;
@@ -39,11 +40,15 @@ public class ControlParqueo {
                 tipoVehiculo = teclado.nextInt();
             } while (tipoVehiculo < 1 || tipoVehiculo > 3);
 
+            tarifa = obtenerTarifa(tipoVehiculo);
+
             // Horas estacionado
             do {
                 System.out.print("Ingrese las horas estacionado: ");
                 horas = teclado.nextInt();
             } while (horas <= 0);
+
+            subtotal = horas * tarifa;
 
             // Ticket perdido
             do {
@@ -54,4 +59,18 @@ public class ControlParqueo {
         }
 
         }
+
+    // Método obtener tarifa
+    public static double obtenerTarifa(int tipoVehiculo) {
+        switch (tipoVehiculo) {
+            case 1:
+                return 5.00;
+            case 2:
+                return 8.00;
+            case 3:
+                return 12.00;
+            default:
+                return 0.00;
+        }
+    }
 }
