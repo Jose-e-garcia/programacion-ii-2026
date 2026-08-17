@@ -23,6 +23,11 @@ public class ControlParqueo {
             int tipoVehiculo;
             int horas;
             String ticketPerdido;
+            double tarifa;
+            double subtotal;
+            double descuento;
+            double recargo;
+            double total;
 
             // Placa
             System.out.print("Ingrese el número de placa: ");
