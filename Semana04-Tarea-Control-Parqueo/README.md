@@ -14,3 +14,6 @@ Se utilizó `calcularPago()` con dos y tres parámetros.
 
 ## Pruebas
 Se probaron datos válidos e inválidos, descuentos, tickets perdidos y varios vehículos.
+
+## Reto opcional
+No realizado.
