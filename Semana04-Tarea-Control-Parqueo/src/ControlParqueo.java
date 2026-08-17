@@ -50,11 +50,20 @@ public class ControlParqueo {
 
             subtotal = horas * tarifa;
 
+            descuento = calcularDescuento(subtotal, horas);
+
             // Ticket perdido
             do {
                 System.out.print("¿Perdió el ticket? (S/N): ");
                 ticketPerdido = teclado.next();
             } while (!ticketPerdido.equals("S") && !ticketPerdido.equals("N"));
+
+            // Calcular recargo
+            if (ticketPerdido.equals("S")) {
+                recargo = 50.00;
+            } else {
+                recargo = 0.00;
+            }
 
         }
 
@@ -73,4 +82,14 @@ public class ControlParqueo {
                 return 0.00;
         }
     }
+
+    // Método calcular descuento
+    public static double calcularDescuento(double subtotal, int horas) {
+        if (horas > 8) {
+            return subtotal * 0.15;
+        } else {
+            return 0.00;
+        }
+    }
+
 }
