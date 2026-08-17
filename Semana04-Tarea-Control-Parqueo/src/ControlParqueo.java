@@ -65,6 +65,13 @@ public class ControlParqueo {
                 recargo = 0.00;
             }
 
+            // Calcular total
+            if (ticketPerdido.equals("S")) {
+                total = calcularPago(horas, tarifa, recargo) - descuento;
+            } else {
+                total = calcularPago(horas, tarifa) - descuento;
+            }
+
         }
 
         }
@@ -90,6 +97,16 @@ public class ControlParqueo {
         } else {
             return 0.00;
         }
+    }
+
+    // Método calcular pago normal
+    public static double calcularPago(int horas, double tarifa) {
+        return horas * tarifa;
+    }
+
+    // Método calcular pago con recargo
+    public static double calcularPago(int horas, double tarifa, double recargo) {
+        return (horas * tarifa) + recargo;
     }
 
 }
