@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class ControlParqueo {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        int cantidadVehiculos;
+
+        // Cantidad de vehículos
+        do {
+            System.out.print("Ingrese la cantidad de vehículos: ");
+            cantidadVehiculos = teclado.nextInt();
+        } while (cantidadVehiculos <= 0);
+
+        // Registro de vehículos
+        for (int i = 1; i <= cantidadVehiculos; i++) {
+
+            System.out.println("\n--- Vehículo " + i + " ---");
+
+            String placa;
+            int tipoVehiculo;
+            int horas;
+            String ticketPerdido;
+
+            // Placa
+            System.out.print("Ingrese el número de placa: ");
+            placa = teclado.next();
+
+            // Tipo de vehículo
+            do {
+                System.out.print("Ingrese el tipo de vehículo (1-Motocicleta, 2-Automóvil, 3-Pickup): ");
+                tipoVehiculo = teclado.nextInt();
+            } while (tipoVehiculo < 1 || tipoVehiculo > 3);
+
+            // Horas estacionado
+            do {
+                System.out.print("Ingrese las horas estacionado: ");
+                horas = teclado.nextInt();
+            } while (horas <= 0);
+
+            // Ticket perdido
+            do {
+                System.out.print("¿Perdió el ticket? (S/N): ");
+                ticketPerdido = teclado.next();
+            } while (!ticketPerdido.equals("S") && !ticketPerdido.equals("N"));
+
+        }
+
+        }
+}
