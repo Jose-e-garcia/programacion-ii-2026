@@ -56,6 +56,19 @@ public class ControlParqueo {
 
             nombreVehiculo = obtenerNombreVehiculo(tipoVehiculo);
 
+            // Contar tipo de vehículo
+            switch (tipoVehiculo) {
+                case 1:
+                    cantidadMotocicletas++;
+                    break;
+                case 2:
+                    cantidadAutomoviles++;
+                    break;
+                case 3:
+                    cantidadPickups++;
+                    break;
+            }
+
             // Horas estacionado
             do {
                 System.out.print("Ingrese las horas estacionado: ");
@@ -79,12 +92,19 @@ public class ControlParqueo {
                 recargo = 0.00;
             }
 
+            if (ticketPerdido.equals("S")) {
+                cantidadTicketsPerdidos++;
+            }
+
             // Calcular total
             if (ticketPerdido.equals("S")) {
                 total = calcularPago(horas, tarifa, recargo) - descuento;
             } else {
                 total = calcularPago(horas, tarifa) - descuento;
             }
+
+            // Acumular dinero recaudado
+            totalRecaudado = totalRecaudado + total;
 
             // Mostrar comprobante
             mostrarComprobante(placa, nombreVehiculo, horas, tarifa, subtotal,
