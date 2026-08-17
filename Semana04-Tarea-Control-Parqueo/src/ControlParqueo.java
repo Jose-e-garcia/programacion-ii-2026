@@ -21,6 +21,8 @@ public class ControlParqueo {
 
             String placa;
             int tipoVehiculo;
+            // Agregamos el nombre del tipo de vehiculo
+            String nombreVehiculo
             int horas;
             String ticketPerdido;
 
@@ -41,6 +43,8 @@ public class ControlParqueo {
             } while (tipoVehiculo < 1 || tipoVehiculo > 3);
 
             tarifa = obtenerTarifa(tipoVehiculo);
+
+            nombreVehiculo = obtenerNombreVehiculo(tipoVehiculo);
 
             // Horas estacionado
             do {
@@ -96,6 +100,20 @@ public class ControlParqueo {
             return subtotal * 0.15;
         } else {
             return 0.00;
+        }
+    }
+
+    // Método obtener el nombre de tipo de Vehículo
+    public static String obtenerNombreVehiculo(int tipoVehiculo) {
+        switch (tipoVehiculo) {
+            case 1:
+                return "Motocicleta";
+            case 2:
+                return "Automóvil";
+            case 3:
+                return "Pickup o camioneta";
+            default:
+                return "Tipo desconocido";
         }
     }
 
