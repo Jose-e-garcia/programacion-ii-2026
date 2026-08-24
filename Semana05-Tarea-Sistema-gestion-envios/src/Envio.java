@@ -41,7 +41,21 @@ public class Envio {
     }
 
     public void mostrarResumen(boolean desglose) {
+
         mostrarResumen();
+
+        if (desglose) {
+            System.out.println("Peso: " + pesoKg + " kg");
+            System.out.println(
+                    "Costo base: Q" + calcularCostoBase());
+            System.out.println(
+                    "Cargos adicionales: Q"
+                            + calcularCargosAdicionales());
+        }
+    }
+
+    public double calcularCargosAdicionales() {
+        return calcularCostoFinal() - calcularCostoBase();
     }
 
 }
