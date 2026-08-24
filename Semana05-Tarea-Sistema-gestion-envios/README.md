@@ -28,6 +28,7 @@ src/
 ├── EnvioNacional.java
 ├── EnvioInternacional.java
 └── Main.java
+```
 
 ## Instrucciones para ejecutar
 
