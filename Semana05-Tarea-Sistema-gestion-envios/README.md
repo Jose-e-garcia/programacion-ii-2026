@@ -28,3 +28,15 @@ src/
 ├── EnvioNacional.java
 ├── EnvioInternacional.java
 └── Main.java
+
+## Instrucciones para ejecutar
+
+Abrir el proyecto en IntelliJ IDEA.
+Ejecutar la clase Main.
+Seleccionar una opción del menú.
+Ingresar los datos solicitados.
+El sistema calculará y mostrará el costo del envío.
+
+## Resultado esperado
+
+El programa permite registrar envíos nacionales e internacionales, validar los datos ingresados y mostrar el costo base, los cargos adicionales y el costo final del envío.
