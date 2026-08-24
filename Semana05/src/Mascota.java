@@ -45,5 +45,6 @@ public class Mascota {
 
     public void emitirSonido() {
         System.out.println("Sonido genérico");
+
     }
 }
