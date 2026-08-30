@@ -1,50 +1,59 @@
-public class Mascota {
+public abstract class Mascota {
+
+    private String codigoPaciente;
     private String nombre;
-    private String color;
     private int edadMeses;
-    private String raza;
-    private double pesoLibras;
+    private double pesoKg;
 
     public Mascota(
+            String codigoPaciente,
             String nombre,
-            String color,
             int edadMeses,
-            String raza,
-            double pesoLibras) {
+            double pesoKg) {
 
+        this.codigoPaciente = codigoPaciente;
         this.nombre = nombre;
-        this.color = color;
         this.edadMeses = edadMeses;
-        this.raza = raza;
-        this.pesoLibras = pesoLibras;
-
+        this.pesoKg = pesoKg;
     }
 
-    public Mascota(
-            String nombre) {
+    public String getCodigoPaciente() {
+        return codigoPaciente;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdadMeses() {
+        return edadMeses;
+    }
+
+    public double getPesoKg() {
+        return pesoKg;
     }
 
     public void actualizarPeso(double nuevoPeso) {
-
         if (nuevoPeso > 0) {
-
-            this.pesoLibras = nuevoPeso;
-
+            this.pesoKg = nuevoPeso;
         } else {
-
-            System.out.println("Peso invpalido");
+            System.out.println(
+                    "El peso no es válido.");
         }
-
     }
 
-    public String mostrarinformacion() {
-        return nombre + " | " + edadMeses + " | " + pesoLibras + " lb";
-
+    public void cumplirMes() {
+        edadMeses++;
     }
 
-    public void emitirSonido() {
-        System.out.println("Sonido genérico");
-
+    public String mostrarInformacion() {
+        return codigoPaciente + " | "
+                + nombre + " | "
+                + edadMeses + " meses | "
+                + pesoKg + " kg";
     }
+
+    public abstract void emitirSonido();
+
+    public abstract double calcularCostoConsulta();
 }

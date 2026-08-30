@@ -1,27 +1,42 @@
-public class Ave extends Mascota{
+public class Ave extends Mascota {
+
     private String tipo;
 
-    public Ave (
+    public Ave(
+            String codigoPaciente,
             String nombre,
-            String color,
             int edadMeses,
-            String tipo,
-            double pesokg) {
+            double pesoKg,
+            String tipo) {
 
-        super(color, edadMeses, tipo, pesokg);
-    }
+        super(
+                codigoPaciente,
+                nombre,
+                edadMeses,
+                pesoKg
+        );
 
-    //Getters
-    public String getTipo(){
-        return tipo;
-    }
-
-    //Setters
-    public void setTipo(String tipo){
         this.tipo = tipo;
     }
 
-    public void emitirSonido(){
-        System.out.println("¡Pio pio!");
+    public String getTipo() {
+        return tipo;
+    }
+
+    @Override
+    public void emitirSonido() {
+        System.out.println(
+                getNombre() + ": ¡Pío, pío!");
+    }
+
+    @Override
+    public double calcularCostoConsulta() {
+        double costo = 75.00;
+
+        if ("Exótica".equalsIgnoreCase(tipo)) {
+            costo += 30.00;
+        }
+
+        return costo;
     }
 }

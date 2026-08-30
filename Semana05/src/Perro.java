@@ -1,13 +1,13 @@
-public class Gato extends Mascota {
+public class Perro extends Mascota {
 
-    private boolean esInterior;
+    private String raza;
 
-    public Gato(
+    public Perro(
             String codigoPaciente,
             String nombre,
             int edadMeses,
             double pesoKg,
-            boolean esInterior) {
+            String raza) {
 
         super(
                 codigoPaciente,
@@ -16,25 +16,25 @@ public class Gato extends Mascota {
                 pesoKg
         );
 
-        this.esInterior = esInterior;
+        this.raza = raza;
     }
 
-    public boolean isInterior() {
-        return esInterior;
+    public String getRaza() {
+        return raza;
     }
 
     @Override
     public void emitirSonido() {
         System.out.println(
-                getNombre() + ": ¡Miau!");
+                getNombre() + ": ¡Guau!");
     }
 
     @Override
     public double calcularCostoConsulta() {
-        double costo = 90.00;
+        double costo = 100.00;
 
-        if (!esInterior) {
-            costo += 15.00;
+        if (getPesoKg() > 25.0) {
+            costo += 25.00;
         }
 
         return costo;
