@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== SISTEMA VETERINARIO VETCARE ===");
@@ -5,6 +7,17 @@ public class Main {
         // Arreglo polimórfico:
         // una referencia Mascota puede almacenar
         // objetos Perro, Gato o Ave.
+
+        ArrayList<Perro> mascotas new ArrayList<>();
+
+        mascotas.add(new Perro(
+                "VET-001",
+                "Luna",
+                14,
+                24.5,
+                "Mestiza"
+        ));
+
         Mascota[] pacientes = {
                 new Perro(
                         "VET-001",
