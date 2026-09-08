@@ -15,9 +15,18 @@ public class MainControlCompras {
 
         double totalGeneral = 0;
 
+        double pagoMasAlto = 0;
+        double pagoMasBajo = 0;
+
+        String productoMasCaro = "";
+        String productoMasBarato = "";
+
+        String categoriaMayorGasto = "";
+        double mayorGastoCategoria = 0;
+
         Scanner teclado = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
+        while (productos.size() < 5) {
 
             System.out.print("Nombre del producto: ");
             String nombre = teclado.nextLine();
@@ -82,6 +91,16 @@ public class MainControlCompras {
 
             totalGeneral = totalGeneral + subtotal;
 
+            if (subtotal > pagoMasAlto) {
+                pagoMasAlto = subtotal;
+                productoMasCaro = producto.getNombre();
+            }
+
+            if (subtotal < pagoMasBajo || pagoMasBajo == 0) {
+                pagoMasBajo = subtotal;
+                productoMasBarato = producto.getNombre();
+            }
+
             if (totalesPorCategoria.containsKey(categoria)) {
                 double totalActual = totalesPorCategoria.get(categoria);
                 totalesPorCategoria.put(categoria, totalActual + subtotal);
@@ -93,10 +112,38 @@ public class MainControlCompras {
 
         System.out.printf("\nTotal general: Q%.2f%n", totalGeneral);
 
+        System.out.println("Total de productos registrados: " + productos.size());
+
+        System.out.printf("Producto con mayor gasto: %s - Q%.2f%n", productoMasCaro, pagoMasAlto);
+        System.out.printf("Producto con menor gasto: %s - Q%.2f%n", productoMasBarato, pagoMasBajo);
+
         System.out.println("\n===== TOTAL POR CATEGORÍA =====");
 
         for (String categoria : totalesPorCategoria.keySet()) {
             System.out.printf("%s: Q%.2f%n", categoria, totalesPorCategoria.get(categoria));
+        }
+
+        for (String categoria : totalesPorCategoria.keySet()) {
+
+            double totalCategoria = totalesPorCategoria.get(categoria);
+
+            if (totalCategoria > mayorGastoCategoria) {
+                mayorGastoCategoria = totalCategoria;
+                categoriaMayorGasto = categoria;
+            }
+        }
+
+        System.out.printf("Categoría con mayor gasto: %s - Q%.2f%n",
+                categoriaMayorGasto, mayorGastoCategoria);
+
+        System.out.print("\nIngrese una categoría para consultar: ");
+        String categoriaConsulta = teclado.nextLine();
+
+        if (totalesPorCategoria.containsKey(categoriaConsulta)) {
+            System.out.printf("Total gastado en %s: Q%.2f%n",
+                    categoriaConsulta, totalesPorCategoria.get(categoriaConsulta));
+        } else {
+            System.out.println("La categoría no existe.");
         }
 
     }
