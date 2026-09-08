@@ -13,6 +13,8 @@ public class MainControlCompras {
 
         HashMap<String, Double> totalesPorCategoria = new HashMap<>();
 
+        double totalGeneral = 0;
+
         Scanner teclado = new Scanner(System.in);
 
         for (int i = 1; i <= 5; i++) {
@@ -63,13 +65,33 @@ public class MainControlCompras {
         System.out.println("\n===== PRODUCTOS REGISTRADOS =====");
 
         for (Producto producto : productos) {
-            System.out.println(producto.getNombre());
+            System.out.printf("%s - Subtotal: Q%.2f%n", producto.getNombre(), producto.calcularSubtotal());
         }
 
         System.out.println("\n===== CATEGORÍAS =====");
 
         for (String categoria : categorias) {
             System.out.println(categoria);
+        }
+
+        for (Producto producto : productos) {
+
+            String categoria = producto.getCategoria();
+            double subtotal = producto.calcularSubtotal();
+
+            if (totalesPorCategoria.containsKey(categoria)) {
+                double totalActual = totalesPorCategoria.get(categoria);
+                totalesPorCategoria.put(categoria, totalActual + subtotal);
+            } else {
+                totalesPorCategoria.put(categoria, subtotal);
+            }
+
+        }
+
+        System.out.println("\n===== TOTAL POR CATEGORÍA =====");
+
+        for (String categoria : totalesPorCategoria.keySet()) {
+            System.out.printf("%s: Q%.2f%n", categoria, totalesPorCategoria.get(categoria));
         }
 
     }
