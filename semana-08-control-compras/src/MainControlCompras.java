@@ -68,6 +68,7 @@ public class MainControlCompras {
             System.out.printf("%s - Subtotal: Q%.2f%n", producto.getNombre(), producto.calcularSubtotal());
         }
 
+
         System.out.println("\n===== CATEGORÍAS =====");
 
         for (String categoria : categorias) {
@@ -79,6 +80,8 @@ public class MainControlCompras {
             String categoria = producto.getCategoria();
             double subtotal = producto.calcularSubtotal();
 
+            totalGeneral = totalGeneral + subtotal;
+
             if (totalesPorCategoria.containsKey(categoria)) {
                 double totalActual = totalesPorCategoria.get(categoria);
                 totalesPorCategoria.put(categoria, totalActual + subtotal);
@@ -87,6 +90,8 @@ public class MainControlCompras {
             }
 
         }
+
+        System.out.printf("\nTotal general: Q%.2f%n", totalGeneral);
 
         System.out.println("\n===== TOTAL POR CATEGORÍA =====");
 
