@@ -36,7 +36,7 @@ El sistema permite registrar autom√≥viles y motocicletas, calcular el costo seg√
 
 * `src/` contiene las clases Java.
 * `database/` contiene el archivo SQL de PostgreSQL.
-* `evidencias/` contiene las evidencias del proyecto.
+* `evidencias.docx` contiene las evidencias del proyecto.
 
 ## Base de datos
 
