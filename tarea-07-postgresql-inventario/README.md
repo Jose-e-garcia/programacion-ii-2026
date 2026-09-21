@@ -27,7 +27,7 @@ Se desarrolló una base de datos en PostgreSQL para administrar el inventario de
 
 ## Ejecución de los scripts
 
-Los archivos SQL deben ejecutarse siguiendo este orden:
+Los archivos SQL se utilizaron siguiendo este orden:
 
 1. `database/01_creacion.sql`
 2. `database/02_datos_prueba.sql`
