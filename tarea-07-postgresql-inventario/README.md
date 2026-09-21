@@ -43,4 +43,4 @@ Los archivos SQL se utilizaron siguiendo este orden:
 ## Datos del estudiante
 
 **Nombre:** JOSE ERNESTO GARCIA
-**Carné:** 9941-10-13121
+**Carnet:** 9941-10-13121
