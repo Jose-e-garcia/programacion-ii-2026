@@ -198,7 +198,7 @@ Ejemplo:
 http://localhost:8080/api/productos
 ```
 
-## Persistencia
+## Nota:
 
 Los productos se almacenan únicamente en memoria utilizando una lista de Java.
 
