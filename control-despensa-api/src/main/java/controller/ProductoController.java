@@ -20,12 +20,42 @@ public class ProductoController {
     private List<Producto> productos = new ArrayList<>();
 
     public ProductoController() {
-        productos.add(new Producto(1L, "Arroz", "Granos", 5, 12.00));
-        productos.add(new Producto(2L, "Frijoles", "Granos", 3, 10.00));
-        productos.add(new Producto(3L, "Leche", "Lacteos", 2, 8.50));
-        productos.add(new Producto(4L, "Queso", "Lacteos", 4, 25.00));
-        productos.add(new Producto(5L, "Jabon", "Limpieza", 1, 15.00));
-        productos.add(new Producto(6L, "Cafe", "Bebidas", 6, 30.00));
+        agregarProducto(new Producto(1L, "Arroz", "Granos", 5, 12.00));
+        agregarProducto(new Producto(2L, "Frijoles", "Granos", 3, 10.00));
+        agregarProducto(new Producto(3L, "Leche", "Lacteos", 2, 8.50));
+        agregarProducto(new Producto(4L, "Queso", "Lacteos", 4, 25.00));
+        agregarProducto(new Producto(5L, "Jabon", "Limpieza", 1, 15.00));
+        agregarProducto(new Producto(6L, "Cafe", "Bebidas", 6, 30.00));
+    }
+
+    private void agregarProducto(Producto producto) {
+        if (producto.getId() == null || producto.getId() <= 0) {
+            throw new IllegalArgumentException("El ID debe ser mayor que 0.");
+        }
+
+        if (producto.getNombre() == null || producto.getNombre().trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre es obligatorio.");
+        }
+
+        if (producto.getCategoria() == null || producto.getCategoria().trim().isEmpty()) {
+            throw new IllegalArgumentException("La categoria es obligatoria.");
+        }
+
+        if (producto.getCantidad() < 0) {
+            throw new IllegalArgumentException("La cantidad no puede ser negativa.");
+        }
+
+        if (producto.getPrecioUnitario() <= 0) {
+            throw new IllegalArgumentException("El precio debe ser mayor que 0.");
+        }
+
+        for (Producto existente : productos) {
+            if (existente.getId().equals(producto.getId())) {
+                throw new IllegalArgumentException("No se permiten IDs repetidos.");
+            }
+        }
+
+        productos.add(producto);
     }
 
     @GetMapping
